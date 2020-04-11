@@ -10,12 +10,26 @@ class HomePageTemp extends StatelessWidget {
         title: Text('Componentes'),
       ),
       body: ListView(
-        children: adicionaLista()
+        //children: adicionaLista()
+        children:_adicionaListaCorta()
         
       ),
 
     );
   }
+
+  List<Widget> _adicionaListaCorta(){
+    return opciones.map((opt)  {
+      return Column(
+        children: <Widget>[
+          ListTile(title: Text('$opt !'), subtitle: Text('subtitulo'), leading: Icon(Icons.add_photo_alternate),trailing: Icon(Icons.arrow_forward),onTap: (){},),
+          Divider()
+        ],
+      );
+    }
+    ).toList();
+  }
+  
 
   List adicionaLista(){
      List<Widget> lista = new List<Widget>();
