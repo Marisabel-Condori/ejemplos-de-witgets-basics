@@ -1,4 +1,5 @@
 import 'package:componentes/provider/menu_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,20 +13,27 @@ class HomePage extends StatelessWidget{
   }
 
   Widget _lista() {
-    print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-    print(menuProvider.opciones);
-
-    return ListView(children: _realizarLista());}
-
-  List<Widget> _realizarLista(){
-    return [
-      ListTile(title: Text('hola mundo')),
-      Divider(),
-      ListTile(title: Text('hola mundo')),
-      Divider(),
-      ListTile(title: Text('hola mundo')),
-      ListTile(title: Text('hola mundo')),
-    ];
+    return FutureBuilder(future: menuProvider.cargarData(),
+    builder: (context, AsyncSnapshot<List<dynamic>>snapshot){
+      return ListView(
+        children: _realizarLista(snapshot.data),
+      );
+    },
+    );
   }
 
+  List<Widget> _realizarLista(List<dynamic>data){
+    final List<Widget>opciones = [];
+    data.forEach((opt){
+      final widgetTemp = ListTile(
+        title: Text(opt['texto']),
+        leading: Icon(Icons.account_circle, color: Colors.blue),
+        trailing: Icon(Icons.keyboard_arrow_right, color:Colors.blue),
+        onTap: (){},
+      );
+      opciones..add(widgetTemp)
+              ..add(Divider());
+    });
+    return opciones;
+  }
 }
