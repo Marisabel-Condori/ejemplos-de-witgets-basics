@@ -6,7 +6,7 @@ class AlertPages extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Alert'),),
-      floatingActionButton: FloatingActionButton(onPressed: (){}),
+      floatingActionButton: FloatingActionButton(child: Icon(Icons.gps_not_fixed) ,onPressed: (){Navigator.pop(context);}),
     ) ;
   }
 }
