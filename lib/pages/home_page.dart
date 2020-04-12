@@ -1,4 +1,5 @@
 import 'package:componentes/provider/menu_provider.dart';
+import 'package:componentes/utils/icon_string_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,12 +23,12 @@ class HomePage extends StatelessWidget{
     );
   }
 
-  List<Widget> _realizarLista(List<dynamic>data){
-    final List<Widget>opciones = [];
+  List<Widget> _realizarLista(List<dynamic> data){
+    final List<Widget> opciones = [];
     data.forEach((opt){
       final widgetTemp = ListTile(
         title: Text(opt['texto']),
-        leading: Icon(Icons.account_circle, color: Colors.blue),
+        leading: getIcon(opt['icon']),
         trailing: Icon(Icons.keyboard_arrow_right, color:Colors.blue),
         onTap: (){},
       );
