@@ -1,3 +1,4 @@
+import 'package:componentes/pages/card_pages.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,5 +11,6 @@ Map<String, WidgetBuilder> getAplicaciones(){
         '/'     : (BuildContext context) => HomePage(),
         'alert' : (BuildContext context) => AlertPages(),
         'avatar': (BuildContext context) => AvatarPages(),
+        'card'  : (BuildContext context) => CardPages()
       };
 }
