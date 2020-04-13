@@ -5,7 +5,7 @@ class AvatarPages extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Alert'),),
+      appBar: AppBar(title: Text('Avatar'),),
       floatingActionButton: FloatingActionButton(onPressed: (){}),
     ) ;
   }
