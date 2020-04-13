@@ -29,7 +29,13 @@ class CardPages extends StatelessWidget{
   Widget _tarjeta2(){
     return Card(child: Column(
       children: <Widget>[
-        Image(image: NetworkImage('https://iso.500px.com/wp-content/uploads/2018/12/500px_blog_trends_licensing.jpg')),
+        //Image(image: NetworkImage('https://iso.500px.com/wp-content/uploads/2018/12/500px_blog_trends_licensing.jpg')),
+        FadeInImage( image: NetworkImage('https://iso.500px.com/wp-content/uploads/2018/12/500px_blog_trends_licensing.jpg'),
+                      placeholder: AssetImage('assets/jar-loading.gif'),
+                      fadeInDuration: Duration(milliseconds: 200),
+                      height: 300.0,
+                      fit: BoxFit.cover,
+                    ),
         Container(padding: EdgeInsets.all(15.3), child: Text('escribir algo')),
       ],
     ),);
