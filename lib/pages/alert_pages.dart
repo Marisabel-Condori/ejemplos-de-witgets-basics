@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AlertPages extends StatelessWidget {
@@ -28,6 +29,7 @@ class AlertPages extends StatelessWidget {
     barrierDismissible:true,
     builder: (context){
       return AlertDialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         title: Text('tituloooo'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
