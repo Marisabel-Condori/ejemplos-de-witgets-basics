@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -20,26 +22,37 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Animated cContainer'),),
+      appBar: AppBar(title: Text('Animated Container'),),
       body: Center(
-        child: Container(
+        child: AnimatedContainer(
           width: _width,
           height: _height,
           decoration: BoxDecoration(
             borderRadius: _borderRadius,
-            color: _color),
+            color: _color), 
+          duration: Duration(seconds: 1),
+          curve: Curves.elasticIn,
         )
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          setState(() {
-            _width = 50.0;
-            _height = 100.0;
-            _borderRadius = BorderRadius.circular(25.0);
-            _color = Colors.lightBlueAccent;
-          });
-        }
+        child: Icon(Icons.arrow_right),
+        onPressed: _cambiarForma
         ),
     ) ;
+  }
+
+  void _cambiarForma(){
+    final random = Random();
+    setState(() {
+            _width = random.nextInt(300).toDouble();
+            _height = random.nextInt(300).toDouble();
+            _borderRadius = BorderRadius.circular(random.nextInt(100).toDouble());
+            _color = Color.fromRGBO(
+              random.nextInt(255), 
+              random.nextInt(255), 
+              random.nextInt(255), 
+              1
+            );
+          });
   }
 }
