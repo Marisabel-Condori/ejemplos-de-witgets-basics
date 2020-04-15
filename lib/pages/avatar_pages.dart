@@ -23,7 +23,10 @@ class AvatarPages extends StatelessWidget{
         ],
       ),
       floatingActionButton: FloatingActionButton(onPressed: (){}),
-      body: Center(child: FadeInImage(placeholder: AssetImage('asset/jar-loading.gif'), image: NetworkImage('https://3.bp.blogspot.com/-dL7cP9aj6FU/WSOI0GHwPJI/AAAAAAAHqD0/I_yJ4kSqkzw_OIBTxiiQf5-cyRsw4cpMACLcB/s1600/groot-baby1.jpg')))
+      body: Center(child: FadeInImage(
+        fadeInDuration: Duration(milliseconds: 200),
+        placeholder: AssetImage('assets/jar-loading.gif'), 
+        image: NetworkImage('https://3.bp.blogspot.com/-dL7cP9aj6FU/WSOI0GHwPJI/AAAAAAAHqD0/I_yJ4kSqkzw_OIBTxiiQf5-cyRsw4cpMACLcB/s1600/groot-baby1.jpg')))
 
     ) ;
   }
