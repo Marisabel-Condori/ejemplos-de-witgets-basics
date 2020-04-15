@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 
 
@@ -28,6 +30,16 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
             color: _color),
         )
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            _width = 50.0;
+            _height = 100.0;
+            _borderRadius = BorderRadius.circular(25.0);
+            _color = Colors.lightBlueAccent;
+          });
+        }
+        ),
     ) ;
   }
 }
