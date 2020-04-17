@@ -17,6 +17,6 @@ Map<String, WidgetBuilder> getAplicaciones(){
         'card'  : (BuildContext context) => CardPages(),
         'animatedContainer'  : (BuildContext context) => AnimatedContainerPage(),
         'input' : (BuildContext context) => InputPages(),
-        'lista' : (BuildContext context) => SlidesPage()
+        'slides' : (BuildContext context) => SlidesPage()
       };
 }

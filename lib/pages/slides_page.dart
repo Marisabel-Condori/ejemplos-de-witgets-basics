@@ -15,10 +15,11 @@ class _SlidesPageState extends State<SlidesPage> {
     return Scaffold(
       appBar: AppBar(title: Text('Slides'),),
       body: Container(
-        padding: EdgeInsets.only(top: 30.0),
+        padding: EdgeInsets.only(top: 40.0),
         child: Column(
           children: <Widget>[
             _crearSlider(),
+            _crearImagen(),
           ],
         ),
       ),
@@ -29,7 +30,6 @@ class _SlidesPageState extends State<SlidesPage> {
     return Slider(
       activeColor: Colors.indigo,
       label: 'tamaño imagen',
-      divisions: 20,
       value: _valorSlide, 
       min: 10.0,
       max: 400.0,
@@ -38,5 +38,13 @@ class _SlidesPageState extends State<SlidesPage> {
           _valorSlide = valor;
         });
       }); 
+  }
+
+  Widget _crearImagen() {
+    return Image(
+      image: NetworkImage('https://lh3.googleusercontent.com/proxy/8jdHhdP-TgiW9Z_j9KqJxylvJ87bHgUfaTXHLpEs0cPpEzBqqHJ_IIWJOIkd7oHKxwO-TnV9kSWhMjqGwlkEDKOGIX0O0HLzttv_CRPCos95OKxGFzYHGLgSNnVnG7ONZpxGmQHrwarJfoPeDS4Gv015zdawaA'),
+      width: _valorSlide,
+      fit: BoxFit.contain,
+      );
   }
 }
