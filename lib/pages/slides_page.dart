@@ -15,6 +15,7 @@ class _SlidesPageState extends State<SlidesPage> {
     return Scaffold(
       appBar: AppBar(title: Text('Slides'),),
       body: Container(
+        padding: EdgeInsets.only(top: 30.0),
         child: Column(
           children: <Widget>[
             _crearSlider(),
@@ -26,6 +27,9 @@ class _SlidesPageState extends State<SlidesPage> {
 
   Widget _crearSlider() {
     return Slider(
+      activeColor: Colors.indigo,
+      label: 'tamaño imagen',
+      divisions: 20,
       value: _valorSlide, 
       min: 10.0,
       max: 400.0,
