@@ -29,18 +29,20 @@ class _AnimatedContainerPageState extends State<AnimatedContainerPage> {
         height: _height,
         decoration: BoxDecoration(borderRadius: _borderRadius, color: _color),
         duration: Duration(seconds: 1),
-        curve: Curves.elasticIn,
+        curve: Curves.fastOutSlowIn,
       )),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.arrow_right), onPressed: _cambiarForma),
     );
   }
 
-  void _cambiarForma() {
+  _cambiarForma() {
     final random = Random();
     setState(() {
       _width = random.nextInt(300).toDouble();
       _height = random.nextInt(300).toDouble();
+      print(_width);
+      print(_height);
       _borderRadius = BorderRadius.circular(random.nextInt(100).toDouble());
       _color = Color.fromRGBO(
           random.nextInt(255), random.nextInt(255), random.nextInt(255), 1);

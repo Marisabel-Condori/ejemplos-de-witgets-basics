@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
@@ -11,6 +12,9 @@ class InputPages extends StatefulWidget {
 class _InputPagesState extends State<InputPages> {
   String _nombre = '';
   String _email = '';
+  String _fecha = '';
+
+  TextEditingController _modificaFecha = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +28,8 @@ class _InputPagesState extends State<InputPages> {
           _crearEmail(),
           Divider(),
           _crearPassword(),
+          Divider(),
+          _crearFecha(context),
           Divider(),
           _crearPersona(),
         ],
@@ -93,6 +99,41 @@ class _InputPagesState extends State<InputPages> {
       subtitle: Text('email: $_email'),
     );
   }
+
+  Widget _crearFecha(context) {
+    return TextField(
+      controller: _modificaFecha,
+      enableInteractiveSelection: false,
+      decoration: InputDecoration(
+        hintText: 'Fecha',
+        icon: Icon(Icons.calendar_today),
+        suffixIcon: Icon(Icons.perm_contact_calendar),
+        labelText: 'Fecha',
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0))
+        ),
+        onTap: (){
+          FocusScope.of(context).requestFocus(new FocusNode());
+          _selectDate(context);
+        },
+    );
+  }
+
+  void _selectDate(BuildContext context) async{
+    DateTime picket = await showDatePicker(
+      context: context, 
+      initialDate: new DateTime.now(), 
+      firstDate: new DateTime(2019), 
+      lastDate: new DateTime(2022)
+      );
+      if (picket != null ){
+        setState(() {
+          _fecha = picket.toString();
+          _modificaFecha.text = _fecha;
+        });
+      }
+  }
+  
 }
 
   
