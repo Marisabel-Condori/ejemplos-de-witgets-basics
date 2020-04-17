@@ -124,7 +124,8 @@ class _InputPagesState extends State<InputPages> {
       context: context, 
       initialDate: new DateTime.now(), 
       firstDate: new DateTime(2019), 
-      lastDate: new DateTime(2022)
+      lastDate: new DateTime(2022),
+      locale: Locale('es','ES')
       );
       if (picket != null ){
         setState(() {
