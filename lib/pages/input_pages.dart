@@ -13,6 +13,9 @@ class _InputPagesState extends State<InputPages> {
   String _nombre = '';
   String _email = '';
   String _fecha = '';
+  String _opcionSeleccionada = 'super1';
+
+  List<String> _poderes = ['super1', 'super2', 'super3', 'super4'];
 
   TextEditingController _modificaFecha = TextEditingController();
 
@@ -30,6 +33,8 @@ class _InputPagesState extends State<InputPages> {
           _crearPassword(),
           Divider(),
           _crearFecha(context),
+          Divider(),
+          _crearDropdown(),
           Divider(),
           _crearPersona(),
         ],
@@ -93,14 +98,7 @@ class _InputPagesState extends State<InputPages> {
     );
   }
 
-  Widget _crearPersona(){
-    return ListTile(
-      title: Text('nombre de la persona es: $_nombre'),
-      subtitle: Text('email: $_email'),
-    );
-  }
-
-  Widget _crearFecha(context) {
+   Widget _crearFecha(context) {
     return TextField(
       controller: _modificaFecha,
       enableInteractiveSelection: false,
@@ -134,7 +132,32 @@ class _InputPagesState extends State<InputPages> {
         });
       }
   }
-  
+
+  _crearDropdown() {
+    return DropdownButton(
+      value: _opcionSeleccionada,
+      items: getOpciones(), 
+      onChanged: (opt){
+        setState(() {
+          _opcionSeleccionada = opt;
+        });
+        });
+  }
+
+  List<DropdownMenuItem<String>> getOpciones(){
+    List<DropdownMenuItem<String>> lista = new List();
+    _poderes.forEach((opt){
+      lista.add(DropdownMenuItem(child: Text(opt),value: opt));
+    }) ;
+    return lista;
+  }
+
+  Widget _crearPersona(){
+    return ListTile(
+      title: Text('nombre de la persona es: $_nombre'),
+      subtitle: Text('email: $_email'),
+    );
+  }
 }
 
   
