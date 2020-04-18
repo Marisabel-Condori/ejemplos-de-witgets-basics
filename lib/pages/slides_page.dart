@@ -10,6 +10,8 @@ class SlidesPage extends StatefulWidget {
 class _SlidesPageState extends State<SlidesPage> {
 
   double _valorSlide = 100.0;
+  bool _bloquearCheck = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +22,7 @@ class _SlidesPageState extends State<SlidesPage> {
           children: <Widget>[
             _crearSlider(),
             _crearImagen(),
+            _crearCheckbox(),
           ],
         ),
       ),
@@ -33,7 +36,7 @@ class _SlidesPageState extends State<SlidesPage> {
       value: _valorSlide, 
       min: 10.0,
       max: 400.0,
-      onChanged: (valor){
+      onChanged: (_bloquearCheck)? null : (valor){
         setState(() {
           _valorSlide = valor;
         });
@@ -42,9 +45,21 @@ class _SlidesPageState extends State<SlidesPage> {
 
   Widget _crearImagen() {
     return Image(
-      image: NetworkImage('https://lh3.googleusercontent.com/proxy/8jdHhdP-TgiW9Z_j9KqJxylvJ87bHgUfaTXHLpEs0cPpEzBqqHJ_IIWJOIkd7oHKxwO-TnV9kSWhMjqGwlkEDKOGIX0O0HLzttv_CRPCos95OKxGFzYHGLgSNnVnG7ONZpxGmQHrwarJfoPeDS4Gv015zdawaA'),
+      image: NetworkImage('https://es.web.img3.acsta.net/medias/nmedia/18/82/78/80/19696270.jpg'),
       width: _valorSlide,
       fit: BoxFit.contain,
       );
+  }
+
+  Widget _crearCheckbox() {
+    return CheckboxListTile(
+      title: Text('Bloquear Checkbox'),
+      value: _bloquearCheck, 
+      onChanged: (valorChek){
+        setState(() {
+          _bloquearCheck =  valorChek;
+        });
+      }
+    );
   }
 }
