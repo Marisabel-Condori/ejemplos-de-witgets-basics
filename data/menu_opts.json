@@ -30,6 +30,11 @@
             "ruta" : "slides",
             "icon" : "tune",
             "texto": "Slides"
+        },
+        {
+            "ruta" : "lista",
+            "icon" : "List",
+            "texto": "Lista & Scroll"
         }
     ]
 }
