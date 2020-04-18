@@ -8,10 +8,24 @@ class ListViewPages extends StatefulWidget {
 }
 
 class _ListViewPagesState extends State<ListViewPages> {
+  ScrollController _scrollController = new ScrollController();
 
-  List<int> _listaNum = [10,12,3,4,5];
+  List<int> _listaNum = [];
+  int ultimoValor = 0;
 
   @override
+  initState() {
+    super.initState();
+    aumenta10();
+
+    _scrollController.addListener((){
+      if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent){
+        aumenta10();
+      }
+    }
+    );
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Listas & Scroll'),),
@@ -21,6 +35,7 @@ class _ListViewPagesState extends State<ListViewPages> {
 
   Widget _crearLista() {
     return ListView.builder(
+      controller: _scrollController,
       itemCount: _listaNum.length,
       itemBuilder: (BuildContext context, index){
         final _almacenaDato = _listaNum[index];
@@ -30,5 +45,16 @@ class _ListViewPagesState extends State<ListViewPages> {
         );
       },
     );
+  }
+
+  aumenta10(){
+    for (var i = 1; i <= 10; i++) {  
+      ultimoValor += 1;
+      print(ultimoValor);
+      _listaNum.add(ultimoValor);
+    }
+    setState(() {
+      
+    });
   }
 }
