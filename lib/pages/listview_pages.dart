@@ -39,7 +39,12 @@ class _ListViewPagesState extends State<ListViewPages> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Listas & Scroll'),),
-      body: _crearLista(),
+      body: Stack(
+        children: <Widget>[
+          _crearLista(),
+          _crearLoading(),
+        ],
+        )
     );
   }
 
@@ -78,5 +83,13 @@ class _ListViewPagesState extends State<ListViewPages> {
     isLoading = false;
     setState(() {});
     _aumenta10();
+  }
+
+  Widget _crearLoading() {
+    if(isLoading){
+      return CircularProgressIndicator();
+    }else{
+      return Container();
+    }
   }
 }
