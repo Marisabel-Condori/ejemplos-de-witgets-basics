@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 class ListViewPages extends StatefulWidget {
@@ -12,18 +14,26 @@ class _ListViewPagesState extends State<ListViewPages> {
 
   List<int> _listaNum = [];
   int ultimoValor = 0;
+  bool isLoading = false;
 
   @override
   initState() {
     super.initState();
-    aumenta10();
+    _aumenta10();
 
     _scrollController.addListener((){
       if(_scrollController.position.pixels == _scrollController.position.maxScrollExtent){
-        aumenta10();
+        //_aumenta10();
+        fetchdata();
       }
     }
     );
+  }
+
+  @override
+  void dispose() { 
+    super.dispose();
+    _scrollController.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -47,7 +57,7 @@ class _ListViewPagesState extends State<ListViewPages> {
     );
   }
 
-  aumenta10(){
+  _aumenta10(){
     for (var i = 1; i <= 10; i++) {  
       ultimoValor += 1;
       print(ultimoValor);
@@ -56,5 +66,17 @@ class _ListViewPagesState extends State<ListViewPages> {
     setState(() {
       
     });
+  }
+
+  Future<Null> fetchdata() async{
+    isLoading = true;
+    setState(() {});
+    return new Timer(Duration(seconds:2 ), esperaRespuesta);
+  }
+
+  void esperaRespuesta(){
+    isLoading = false;
+    setState(() {});
+    _aumenta10();
   }
 }
