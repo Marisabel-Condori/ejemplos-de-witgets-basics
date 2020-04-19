@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ListViewPages extends StatefulWidget {
@@ -87,7 +88,18 @@ class _ListViewPagesState extends State<ListViewPages> {
 
   Widget _crearLoading() {
     if(isLoading){
-      return CircularProgressIndicator();
+      return Column(
+        //mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircularProgressIndicator(),
+            ],
+          )
+        ],
+      );
     }else{
       return Container();
     }
