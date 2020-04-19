@@ -50,16 +50,19 @@ class _ListViewPagesState extends State<ListViewPages> {
   }
 
   Widget _crearLista() {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _listaNum.length,
-      itemBuilder: (BuildContext context, index){
-        final _almacenaDato = _listaNum[index];
-        return FadeInImage(
-          placeholder: AssetImage('assets/jar-loading.gif'), 
-          image: NetworkImage('https://i.picsum.photos/id/$_almacenaDato/525/500.jpg')
-        );
-      },
+    return RefreshIndicator(
+      onRefresh: _agregarPagina1,
+        child: ListView.builder(
+        controller: _scrollController,
+        itemCount: _listaNum.length,
+        itemBuilder: (BuildContext context, index){
+          final _almacenaDato = _listaNum[index];
+          return FadeInImage(
+            placeholder: AssetImage('assets/jar-loading.gif'), 
+            image: NetworkImage('https://i.picsum.photos/id/$_almacenaDato/525/500.jpg')
+          );
+        },
+      ),
     );
   }
 
@@ -107,5 +110,13 @@ class _ListViewPagesState extends State<ListViewPages> {
     }else{
       return Container();
     }
+  }
+
+  Future<Null> _agregarPagina1() {
+    Timer(Duration(seconds: 2), (){
+      _listaNum.clear();
+      _aumenta10();
+    });
+    return Future.delayed(Duration(seconds: 2));
   }
 }
