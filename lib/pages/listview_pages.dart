@@ -82,7 +82,9 @@ class _ListViewPagesState extends State<ListViewPages> {
 
   void esperaRespuesta(){
     isLoading = false;
-    setState(() {});
+    _scrollController.animateTo(
+      _scrollController.position.pixels+100, duration: Duration(milliseconds: 1000), curve: Curves.ease);
+
     _aumenta10();
   }
 
@@ -94,10 +96,12 @@ class _ListViewPagesState extends State<ListViewPages> {
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            
             children: <Widget>[
               CircularProgressIndicator(),
             ],
-          )
+          ),
+          SizedBox(height: 15.0),
         ],
       );
     }else{
